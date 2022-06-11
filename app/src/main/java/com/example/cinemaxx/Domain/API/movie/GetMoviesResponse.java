@@ -1,4 +1,4 @@
-package com.example.cinemaxx.Domain;
+package com.example.cinemaxx.Domain.API.movie;
 
 
 import com.google.gson.annotations.Expose;
@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class Response implements Serializable
+public class GetMoviesResponse implements Serializable
 {
 
     @SerializedName("page")
@@ -15,7 +15,7 @@ public class Response implements Serializable
     private Integer page;
     @SerializedName("results")
     @Expose
-    private List<Result> results = null;
+    private List<MovieResult> movieResults = null;
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;
@@ -32,12 +32,12 @@ public class Response implements Serializable
         this.page = page;
     }
 
-    public List<Result> getResults() {
-        return results;
+    public List<MovieResult> getResults() {
+        return movieResults;
     }
 
-    public void setResults(List<Result> results) {
-        this.results = results;
+    public void setResults(List<MovieResult> movieResults) {
+        this.movieResults = movieResults;
     }
 
     public Integer getTotalPages() {

@@ -1,6 +1,7 @@
 package com.example.cinemaxx.API;
 
-import com.example.cinemaxx.Domain.Response;
+import com.example.cinemaxx.Domain.API.genre.GetGenreResult;
+import com.example.cinemaxx.Domain.API.movie.GetMoviesResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -9,10 +10,16 @@ import retrofit2.http.Query;
 public interface TMDBMAPIMovieInfoService {
 
     @GET("/3/movie/popular")
-    Call<Response> getPopularMovies(
+    Call<GetMoviesResponse> getPopularMovies(
             @Query("api_key") String apiKey,
             @Query("language") String language
     );
 
+
+    @GET("/3//genre/movie/list")
+    Call<GetGenreResult> getAllGenre(
+            @Query("api_key") String apiKey,
+            @Query("language") String language
+    );
 
 }

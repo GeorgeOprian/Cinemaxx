@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cinemaxx.API.TMDBMAPIMovieInfoBuilder;
-import com.example.cinemaxx.Domain.Result;
+import com.example.cinemaxx.Domain.ui.MovieToDisplay;
 import com.example.cinemaxx.R;
 import com.squareup.picasso.Picasso;
 
@@ -18,9 +18,9 @@ import java.util.List;
 
 public class DisplayMoviesAdapter extends RecyclerView.Adapter<DisplayMoviesAdapter.MoviesViewHolder> {
 
-    private List<Result> localDataSet;
+    private List<MovieToDisplay> localDataSet;
 
-    public void submitList(List<Result> movies){
+    public void submitList(List<MovieToDisplay> movies){
         this.localDataSet = movies;
         notifyDataSetChanged();
     }
@@ -64,11 +64,11 @@ public class DisplayMoviesAdapter extends RecyclerView.Adapter<DisplayMoviesAdap
 
         }
 
-        public void bind(Result result) {
-            Picasso.get().load(TMDBMAPIMovieInfoBuilder.DOWNLOAD_IMAGE_URL + result.getPosterPath()).into(poster);
-            title.setText(result.getTitle());
-            genres.setText(result.getGenreIds().toString()); //TODO replace with values from db
-            rating.setText(result.getVoteAverage().toString());
+        public void bind(MovieToDisplay movieResult) {
+            Picasso.get().load(TMDBMAPIMovieInfoBuilder.DOWNLOAD_IMAGE_URL + movieResult.getPosterPath()).into(poster);
+            title.setText(movieResult.getTitle());
+            genres.setText(movieResult.getGenresName().toString());
+            rating.setText(movieResult.getVoteAverage().toString());
 
         }
     }
