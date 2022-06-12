@@ -1,13 +1,11 @@
-package com.example.cinemaxx.ui.home;
+package com.example.cinemaxx.ui.topRated;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,12 +21,11 @@ import com.example.cinemaxx.Domain.API.movie.MovieResult;
 import com.example.cinemaxx.Domain.DB.Genre;
 import com.example.cinemaxx.Domain.ui.MovieToDisplay;
 import com.example.cinemaxx.adapters.DisplayMoviesAdapter;
-import com.example.cinemaxx.databinding.FragmentHomeBinding;
+import com.example.cinemaxx.databinding.FragmentTopRatedBinding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -36,9 +33,9 @@ import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class HomeFragment extends Fragment {
+public class TopRatedFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentTopRatedBinding binding;
 
     private DisplayMoviesAdapter adapter;
     private Realm realm;
@@ -72,15 +69,13 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentTopRatedBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        handleSearchComponents();
-
         initAdapter();
+
+        handleSearchComponents();
 
         return root;
     }
@@ -139,11 +134,6 @@ public class HomeFragment extends Fragment {
         binding.container.setAdapter(adapter);
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
 
     private void getAllGenreFromApi() {
         Call<GetGenreResult> call = TMDBMAPIMovieInfoBuilder.getInstance().getAllGenre(TMDBMAPIMovieInfoBuilder.API_KEY, TMDBMAPIMovieInfoBuilder.LANGUAGE);
@@ -191,7 +181,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void getPopularMovies() {
-        Call<GetMoviesResponse> call = TMDBMAPIMovieInfoBuilder.getInstance().getPopularMovies(TMDBMAPIMovieInfoBuilder.API_KEY, TMDBMAPIMovieInfoBuilder.LANGUAGE);
+        Call<GetMoviesResponse> call = TMDBMAPIMovieInfoBuilder.getInstance().getTopRatedMovies(TMDBMAPIMovieInfoBuilder.API_KEY, TMDBMAPIMovieInfoBuilder.LANGUAGE);
 
         call.enqueue(new Callback<GetMoviesResponse>() {
             @Override
@@ -236,4 +226,9 @@ public class HomeFragment extends Fragment {
     }
 
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }

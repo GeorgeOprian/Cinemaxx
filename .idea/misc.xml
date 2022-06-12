@@ -4,16 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.1855" />
+        <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/drawable/ic_logout.xml" value="0.244" />
+        <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/drawable/rounded_button.xml" value="0.2045" />
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/activity_cameraa.xml" value="0.4473684210526316" />
-        <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/activity_sign_in.xml" value="0.35104166666666664" />
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/app_bar_main.xml" value="0.25" />
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/camera_activity.xml" value="0.265625" />
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/content_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/fragment_gallery.xml" value="0.1859375" />
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/fragment_popular_movies.xml" value="0.27439024390243905" />
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />
+        <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/fragment_top_rated.xml" value="0.1" />
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/movie_card.xml" value="0.5" />
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/layout/nav_header_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/menu/main.xml" value="0.33" />
         <entry key="..\:/Personale/Master/Aplicatii mobile/Cinemaxx/app/src/main/res/xml/provider_paths.xml" value="0.18697916666666667" />
       </map>

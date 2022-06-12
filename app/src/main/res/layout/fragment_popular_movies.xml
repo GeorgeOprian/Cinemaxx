@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.popularmovies.PopularMoviesFragment">
 
 
     <EditText
@@ -42,7 +42,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/container"
-        android:layout_width="379dp"
+        android:layout_width="match_parent"
         android:layout_height="642dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"

@@ -22,4 +22,9 @@ public interface TMDBMAPIMovieInfoService {
             @Query("language") String language
     );
 
+    @GET("/3/movie/top_rated")
+    Call<GetMoviesResponse> getTopRatedMovies(
+            @Query("api_key") String apiKey,
+            @Query("language") String language
+    );
 }

@@ -67,9 +67,21 @@ public class DisplayMoviesAdapter extends RecyclerView.Adapter<DisplayMoviesAdap
         public void bind(MovieToDisplay movieResult) {
             Picasso.get().load(TMDBMAPIMovieInfoBuilder.DOWNLOAD_IMAGE_URL + movieResult.getPosterPath()).into(poster);
             title.setText(movieResult.getTitle());
-            genres.setText(movieResult.getGenresName().toString());
+            genres.setText(formatGenres(movieResult.getGenresName()));
             rating.setText(movieResult.getVoteAverage().toString());
 
+        }
+
+        public String formatGenres(List<String> genres) {
+            String output = "";
+
+            for (int i = 0; i < genres.size(); i++) {
+                output += genres.get(i);
+                if (i < genres.size() - 1) {
+                    output +=  ", ";
+                }
+            }
+            return output;
         }
     }
 }

@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class TMDBMAPIMovieInfoBuilder {
 
     private static TMDBMAPIMovieInfoService apiBuilder;
-    private final static String BASE_URL = "https://api.themoviedb.org/";
+    public final static String BASE_URL = "https://api.themoviedb.org/";
     public final static String API_KEY = "d93bc871dae06ca875f3350886d89042";
     public final static String LANGUAGE = "en-US";
     public final static String DOWNLOAD_IMAGE_URL = "https://image.tmdb.org//t/p/w185/";
