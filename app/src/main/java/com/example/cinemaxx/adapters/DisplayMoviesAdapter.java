@@ -19,6 +19,12 @@ import java.util.List;
 public class DisplayMoviesAdapter extends RecyclerView.Adapter<DisplayMoviesAdapter.MoviesViewHolder> {
 
     private List<MovieToDisplay> localDataSet;
+    public static OnShowMovieItemClickListener itemClickListener;
+
+    public DisplayMoviesAdapter(OnShowMovieItemClickListener listener) {
+        itemClickListener = listener;
+    }
+
 
     public void submitList(List<MovieToDisplay> movies){
         this.localDataSet = movies;
@@ -50,6 +56,8 @@ public class DisplayMoviesAdapter extends RecyclerView.Adapter<DisplayMoviesAdap
 
     public class MoviesViewHolder extends RecyclerView.ViewHolder{
 
+        private View view;
+
         private final ImageView poster;
         private final TextView title;
         private final TextView genres;
@@ -62,6 +70,8 @@ public class DisplayMoviesAdapter extends RecyclerView.Adapter<DisplayMoviesAdap
             genres = (TextView) view.findViewById(R.id.genres_values);
             rating = (TextView) view.findViewById(R.id.rating_value);
 
+            this.view = view;
+
         }
 
         public void bind(MovieToDisplay movieResult) {
@@ -69,7 +79,12 @@ public class DisplayMoviesAdapter extends RecyclerView.Adapter<DisplayMoviesAdap
             title.setText(movieResult.getTitle());
             genres.setText(formatGenres(movieResult.getGenresName()));
             rating.setText(movieResult.getVoteAverage().toString());
-
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itemClickListener.onItemClick(movieResult);
+                }
+            });
         }
 
         public String formatGenres(List<String> genres) {
@@ -83,5 +98,6 @@ public class DisplayMoviesAdapter extends RecyclerView.Adapter<DisplayMoviesAdap
             }
             return output;
         }
+
     }
 }

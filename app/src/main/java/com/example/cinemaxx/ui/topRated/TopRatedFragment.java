@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ import com.example.cinemaxx.Domain.API.movie.MovieResult;
 import com.example.cinemaxx.Domain.DB.Genre;
 import com.example.cinemaxx.Domain.ui.MovieToDisplay;
 import com.example.cinemaxx.adapters.DisplayMoviesAdapter;
+import com.example.cinemaxx.adapters.OnShowMovieItemClickListener;
 import com.example.cinemaxx.databinding.FragmentTopRatedBinding;
 
 import java.util.ArrayList;
@@ -33,7 +35,7 @@ import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class TopRatedFragment extends Fragment {
+public class TopRatedFragment extends Fragment implements OnShowMovieItemClickListener {
 
     private FragmentTopRatedBinding binding;
 
@@ -129,7 +131,7 @@ public class TopRatedFragment extends Fragment {
     }
 
     private void initAdapter() {
-        adapter = new DisplayMoviesAdapter();
+        adapter = new DisplayMoviesAdapter(this);
         binding.container.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.container.setAdapter(adapter);
     }
@@ -230,5 +232,10 @@ public class TopRatedFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onItemClick(MovieToDisplay search) {
+        Toast.makeText(getContext(), search.getTitle(), Toast.LENGTH_SHORT).show();
     }
 }
