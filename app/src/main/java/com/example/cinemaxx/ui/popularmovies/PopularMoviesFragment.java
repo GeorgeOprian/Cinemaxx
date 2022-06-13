@@ -1,5 +1,6 @@
 package com.example.cinemaxx.ui.popularmovies;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +19,12 @@ import com.example.cinemaxx.Domain.API.genre.GenreAPI;
 import com.example.cinemaxx.Domain.API.genre.GetGenreResult;
 import com.example.cinemaxx.Domain.API.movie.GetMoviesResponse;
 import com.example.cinemaxx.Domain.API.movie.MovieResult;
+import com.example.cinemaxx.Domain.API.video.GetVideoResponse;
+import com.example.cinemaxx.Domain.API.video.VideoResult;
 import com.example.cinemaxx.Domain.DB.Genre;
 import com.example.cinemaxx.Domain.ui.MovieToDisplay;
+import com.example.cinemaxx.SignInActivity;
+import com.example.cinemaxx.VideoPlaybackActivity;
 import com.example.cinemaxx.adapters.DisplayMoviesAdapter;
 import com.example.cinemaxx.adapters.OnShowMovieItemClickListener;
 import com.example.cinemaxx.databinding.FragmentPopularMoviesBinding;
@@ -214,6 +219,7 @@ public class PopularMoviesFragment extends Fragment implements OnShowMovieItemCl
         for (MovieResult movieFromApi: movieResults) {
             MovieToDisplay movieToDisplay = new MovieToDisplay();
 
+            movieToDisplay.setId(movieFromApi.getId());
             movieToDisplay.setTitle(movieFromApi.getTitle());
             movieToDisplay.setPosterPath(movieFromApi.getPosterPath());
             movieToDisplay.setVoteAverage(movieFromApi.getVoteAverage());
@@ -231,8 +237,40 @@ public class PopularMoviesFragment extends Fragment implements OnShowMovieItemCl
         }
     }
 
+    private void getMovieVideos(int movieId) {
+        Call<GetVideoResponse> call = TMDBMAPIMovieInfoBuilder.getInstance().getMovieVideos(movieId, TMDBMAPIMovieInfoBuilder.API_KEY, TMDBMAPIMovieInfoBuilder.LANGUAGE);
+
+        call.enqueue(new Callback<GetVideoResponse>() {
+            @Override
+            public void onResponse(Call<GetVideoResponse> call, retrofit2.Response<GetVideoResponse> response) {
+
+                if (response.code() == 200) {
+                    GetVideoResponse body = response.body();
+                    VideoResult firstTrailer = body.getYoutubeTrailers().get(0);
+                    goToPlayVideoActivity(firstTrailer.getKey());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetVideoResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
     @Override
     public void onItemClick(MovieToDisplay search) {
         Toast.makeText(getContext(), search.getTitle(), Toast.LENGTH_SHORT).show();
+        getMovieVideos(search.getId());
+    }
+
+    private void goToPlayVideoActivity(String videoKey) {
+        Intent intent = new Intent(getContext(), VideoPlaybackActivity.class);
+
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("text");
+        intent.putExtra(Intent.EXTRA_TEXT, videoKey);
+
+        startActivity(intent);
     }
 }

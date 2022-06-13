@@ -10,6 +10,11 @@ import java.util.List;
 public class MovieResult implements Serializable
 {
 
+
+    @SerializedName("id")
+    @Expose
+    private Integer id;
+
     @SerializedName("genre_ids")
     @Expose
     private List<Integer> genreIds = null;
@@ -27,6 +32,14 @@ public class MovieResult implements Serializable
     private Double voteAverage;
 
     private final static long serialVersionUID = -1217225042415917271L;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public List<Integer> getGenreIds() {
         return genreIds;

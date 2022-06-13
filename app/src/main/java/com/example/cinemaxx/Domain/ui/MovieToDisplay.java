@@ -5,6 +5,8 @@ import java.util.List;
 
 public class MovieToDisplay {
 
+    private Integer id;
+
     private List<String> genresName = null;
 
     private String posterPath;
@@ -13,6 +15,13 @@ public class MovieToDisplay {
 
     private Double voteAverage;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public List<String> getGenresName() {
         return genresName;
